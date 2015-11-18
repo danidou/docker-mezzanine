@@ -1,0 +1,11 @@
+FROM python:3.3
+
+ENV PYTHONBUFFERED 1
+ENV APPLICATION_ROOT /usr/src/
+
+RUN mkdir -p $APPLICATION_ROOT
+WORKDIR $APPLICATION_ROOT
+ADD requirements.txt $APPLICATION_ROOT
+ADD manage.py $APPLICATION_ROOT
+ADD __init__.py $APPLICATION_ROOT
+RUN pip install -r requirements.txt

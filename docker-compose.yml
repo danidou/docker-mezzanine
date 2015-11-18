@@ -1,0 +1,21 @@
+app:
+  restart: always
+  build: .
+  expose:
+    - "80"
+  links:
+    - db
+  volumes:
+    - ./app:/usr/src/app
+  command: python3 manage.py runserver 0.0.0.0:80
+  environment:
+    VIRTUALHOST: mezzanine.local
+db:
+  restart: always
+  image: postgres
+  volumes:
+    - /var/lib/postgresql
+  environment:
+    POSTGRES_PASSWORD: postgres
+  expose:
+    - "5432"
