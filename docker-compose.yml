@@ -6,7 +6,7 @@ app:
   links:
     - db
   volumes:
-    - ./app:/usr/src/app
+    - .:/usr/src
   command: python3 manage.py runserver 0.0.0.0:80
   environment:
     VIRTUALHOST: mezzanine.local
